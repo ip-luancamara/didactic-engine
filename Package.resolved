@@ -1,0 +1,15 @@
+{
+  "originHash" : "a9d957c9ee7cd77e1c57033e388c80da41f54240d4ac30a97d3e47edcba29685",
+  "pins" : [
+    {
+      "identity" : "unicred-uds-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "git@ssh.dev.azure.com:v3/unicredbr/TI/unicred-uds-ios",
+      "state" : {
+        "revision" : "bcb810006a649199306ce0aeb8223f8a0da626f4",
+        "version" : "1.23.1"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -1,0 +1,666 @@
+{
+  "sourceLanguage" : "pt-BR",
+  "strings" : {
+    "accessAll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acessar todas"
+          }
+        }
+      }
+    },
+    "account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        }
+      }
+    },
+    "accountDetails" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes da conta"
+          }
+        }
+      }
+    },
+    "allTransactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas as transações"
+          }
+        }
+      }
+    },
+    "availableLimit" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite disponível"
+          }
+        }
+      }
+    },
+    "bringMyData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trazer meus dados"
+          }
+        }
+      }
+    },
+    "cardDetails" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes do cartão"
+          }
+        }
+      }
+    },
+    "category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
+          }
+        }
+      }
+    },
+    "categoryChangeSuccessMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A categoria da transação foi alterada."
+          }
+        }
+      }
+    },
+    "change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterar"
+          }
+        }
+      }
+    },
+    "changeCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterar categoria"
+          }
+        }
+      }
+    },
+    "changeCategoryErrorAlertDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, tente novamente."
+          }
+        }
+      }
+    },
+    "changeCategoryErrorAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tivemos um problema ao alterar a categoria da transação."
+          }
+        }
+      }
+    },
+    "changeCategoryScreenTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha a categoria correta para essa transação:"
+          }
+        }
+      }
+    },
+    "checkingAccount" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minhas contas correntes"
+          }
+        }
+      }
+    },
+    "cleanFilter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar filtro"
+          }
+        }
+      }
+    },
+    "currentCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria atual"
+          }
+        }
+      }
+    },
+    "currentStatement" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fatura atual"
+          }
+        }
+      }
+    },
+    "dueDate" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vencimento"
+          }
+        }
+      }
+    },
+    "emptySpendingByCategorySubtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao realizar transações em suas contas compartilhadas, as categorias das despesas serão listadas em ordem de relevância."
+          }
+        }
+      }
+    },
+    "emptySpendingByCategoryTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você ainda não gastou nada neste mês"
+          }
+        }
+      }
+    },
+    "entries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entradas"
+          }
+        }
+      }
+    },
+    "entry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrada"
+          }
+        }
+      }
+    },
+    "exit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saída"
+          }
+        }
+      }
+    },
+    "exits" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saídas"
+          }
+        }
+      }
+    },
+    "feedbackFirstLoadDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quase lá! Estamos carregando seus dados."
+          }
+        }
+      }
+    },
+    "feedbackFirstLoadTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em breve seu gerenciador financeiro estará liberado para uso."
+          }
+        }
+      }
+    },
+    "feedbackNotSharedDataDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para começar a usar o gerenciador financeiro da Unicred, traga seus dados de outros bancos e instituições via Open Finance."
+          }
+        }
+      }
+    },
+    "feedbackNotSharedDataTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suas finanças em um só aplicativo"
+          }
+        }
+      }
+    },
+    "feedbackUnknownDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nosso sistema ficou indisponível por alguns instantes. Por favor, tente novamente."
+          }
+        }
+      }
+    },
+    "filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar"
+          }
+        }
+      }
+    },
+    "financialManager" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciador Financeiro"
+          }
+        }
+      }
+    },
+    "goBackToMainScreen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voltar para tela inicial"
+          }
+        }
+      }
+    },
+    "goToMainScreen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir para tela inicial"
+          }
+        }
+      }
+    },
+    "hiddenValue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "••••"
+          }
+        }
+      }
+    },
+    "mainViewInfoSubtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Open Finance, dependemos do envio de informações de outras instituições para exibir os valores corretamente. Confira as datas das últimas atualizações em sua tela de transações. Se os valores permanecerem incorretos, entre em contato conosco pelo chat."
+          }
+        }
+      }
+    },
+    "mainViewInfoTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encontrou algum valor incorreto?"
+          }
+        }
+      }
+    },
+    "monthBalance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balanço do mês"
+          }
+        }
+      }
+    },
+    "monthSelect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione o mês"
+          }
+        }
+      }
+    },
+    "movements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimentações"
+          }
+        }
+      }
+    },
+    "movementTypeFilterTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione o tipo de movimentação"
+          }
+        }
+      }
+    },
+    "movimentationType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de movimentação"
+          }
+        }
+      }
+    },
+    "myAccounts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minhas contas"
+          }
+        }
+      }
+    },
+    "myCards" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meus cartões"
+          }
+        }
+      }
+    },
+    "myExpenses" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meus gastos"
+          }
+        }
+      }
+    },
+    "myOutgoings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minhas despesas"
+          }
+        }
+      }
+    },
+    "noMovementsAlertDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Após realizar ou receber transações, elas aparecerão nesta tela. Você pode ajustar os filtros para conferir outro contexto."
+          }
+        }
+      }
+    },
+    "noMovementsAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você ainda não tem movimentações."
+          }
+        }
+      }
+    },
+    "openStatements" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faturas em aberto"
+          }
+        }
+      }
+    },
+    "switchViewSubtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao habilitar esta opção, a transação não será considerada como despesa nos gráficos e insights financeiros."
+          }
+        }
+      }
+    },
+    "switchViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconsiderar como despesa"
+          }
+        }
+      }
+    },
+    "total" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        }
+      }
+    },
+    "totalBalance" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo total"
+          }
+        }
+      }
+    },
+    "totalOnPeriod" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total gasto no período"
+          }
+        }
+      }
+    },
+    "totalSpentOnCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total gasto na categoria"
+          }
+        }
+      }
+    },
+    "transactionDetails" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes da transação"
+          }
+        }
+      }
+    },
+    "tryAgain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente novamente"
+          }
+        }
+      }
+    },
+    "uncategorized" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não categorizado"
+          }
+        }
+      }
+    },
+    "value" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor"
+          }
+        }
+      }
+    },
+    "yearSelect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione o ano"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

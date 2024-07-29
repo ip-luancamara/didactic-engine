@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "uds_logo_credit_card_flag_master_card.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

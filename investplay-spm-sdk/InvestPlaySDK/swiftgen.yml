@@ -1,0 +1,11 @@
+input_dir: InvestplaySDK/Sources/pfm-investplay/Resources/
+output_dir: InvestplaySDK/Sources/pfm-investplay/Resources/
+
+strings:
+- inputs: Base.xcstrings
+  outputs:
+    templateName: flat-swift5
+    output: I18n.swift
+    params:
+      enumName: I18n
+      publicAccess: false

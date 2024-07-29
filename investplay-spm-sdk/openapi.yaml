@@ -1,0 +1,788 @@
+openapi: 3.0.2
+info:
+  description: |
+    APIs para o `sdk` PFM. Mais informações na [página do desenvolvedor](https://dev.investplay.com.br/pfm-sdks).
+  version: 1.0.0-beta-2
+  title: PFM APIs by InvestPlay
+  contact:
+    email: ismael@investplay.com.br
+servers:
+    - description: Open Finance Connector APIs
+      url: https://api.pfm-sdk.{domain}/public/v1
+      variables:
+        domain:
+          description: Domínio
+          default: 'investplay-pfm-ip.click'
+          enum:
+            - investplay-pfm-ip.click
+externalDocs:
+  description: Saiba mais sobre a investplay
+  url: 'https://investplay.com.br'
+tags:
+  - name: Links
+    description: |
+      Representalção da marca de um conglomerado (IF), agrupando serviços ofertadas pela mesma.
+  - name: Services
+    description: |
+      Produtos que o usuário consome da IF (ex.: cartão, conta corrente, investimentos, etc).
+paths:
+  /links:
+    get:
+      tags:
+        - Links
+      summary: Obtém as marcas com as quais o usuário possui algum tipo de relacionamento
+      parameters:
+        - in: query
+          name: loadServices
+          description: indica se os serviços dos links devem ser carregados ou não
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Links obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Links
+      summary: |
+        Cria um novo link.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateLink'
+      responses:
+        '201':
+          description: Link criado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkData'
+        '400':
+          description: um ou mais problemas foram encontrados.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrors'
+        '401':
+          description: unauthorized.
+      security:
+        - bearerAuth: []
+  /links/{linkId}:
+    get:
+      tags:
+        - Links
+      summary: Obtém uma marca com a qual o usuário possui algum tipo de relacionamento
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+        - in: query
+          name: loadServices
+          description: indica se os serviços dos links devem ser carregados ou não
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Link obtido com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - Links
+      summary: |
+        Altera atributos do link
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      requestBody:
+        $ref: '#/components/requestBodies/ChangeLink'
+      responses:
+        '200':
+          description: Link alterado com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkData'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - Links
+      summary: Remove o link e os dados dependentes deste (serviços, transações, etc)
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      responses:
+        '204':
+          description: Link removido com sucesso
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+  /links/{linkId}/services:
+    get:
+      tags:
+        - Services
+      summary: Obtém os produtos que o usuário consome junto à IF.
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link ao qual os serviços pertencem
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      responses:
+        '200':
+          description: Serviços obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Services
+      summary: Cria um serviço.
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link ao qual o serviço pertence
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      requestBody:
+        $ref: '#/components/requestBodies/CreateService'
+      responses:
+        '201':
+          description: Serviço criado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+  /links/{linkId}/services/{serviceId}:
+    get:
+      tags:
+        - Services
+      summary: Obtém os produtos que o usuário consome junto à IF.
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link ao qual o serviço pertence
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+        - in: path
+          name: serviceId
+          description: ID do serviço
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      responses:
+        '200':
+          description: Serviço obtido com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - Services
+      summary: Atualiza atributos do serviço.
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link ao qual os serviços pertencem
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+        - in: path
+          name: serviceId
+          description: ID do serviço
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      requestBody:
+        $ref: '#/components/requestBodies/ChangeService'
+      responses:
+        '200':
+          description: Serviço atualizado com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - Services
+      summary: Exclui o serviço e seus dados.
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link ao qual os serviços pertencem
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+        - in: path
+          name: serviceId
+          description: ID do serviço
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      responses:
+        '204':
+          description: Serviço excluído com sucesso.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+  /links/{linkId}/services/{serviceId}/status:
+    put:
+      tags:
+        - Services
+      summary: Atualiza o status do serviço (habilitado/desabilitado).
+      parameters:
+        - in: path
+          name: linkId
+          description: ID do link ao qual o serviço pertence
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+        - in: path
+          name: serviceId
+          description: ID do serviço
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: "f8c224aa-f061-4faf-86b6-e515a62d8b4e"
+      requestBody:
+        $ref: '#/components/requestBodies/ChangeServiceStatus'
+      responses:
+        '200':
+          description: Serviço atualizado com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '5XX':
+          description: Unexpected error.
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      description: O access token não foi informado ou está inválido
+    BadRequestError:
+      description: Não foi possível processar a solicitação
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              reference:
+                type: string
+              errors:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseError'
+    NotFoundError:
+      description: Recurso não encontrado
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              reference:
+                type: string
+              errors:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseError'
+  requestBodies:
+    CreateLink:
+      description: Atributos para criação do link.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: nome para sobrepor o nome da marca
+                maxLength: 50
+              brandId:
+                type: string
+                description: id da marca
+                maxLength: 50
+              primaryColor: 
+                type: string
+                description: cor para sobrepor a cor da marca
+                maxLength: 25
+              services:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/CreateAccountServiceRequest'
+                    - $ref: '#/components/schemas/CreateCreditCardServiceRequest'
+    ChangeLink:
+      description: Atributos do link que devem ser alterados
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Pelo menos um atributo deve ser informado
+            properties:
+              name:
+                type: string
+                description: nome para sobrepor o nome da marca
+                maxLength: 50
+              brandId:
+                type: string
+                description: id da marca
+                maxLength: 50
+              primaryColor: 
+                type: string
+                description: cor para sobrepor a cor da marca
+                maxLength: 25
+    CreateService:
+      description: Atributos para criação de um serviço.
+      required: true
+      content:
+        application/json:
+          schema:
+            anyOf:
+              - $ref: '#/components/schemas/CreateAccountServiceRequest'
+              - $ref: '#/components/schemas/CreateCreditCardServiceRequest'
+    ChangeService:
+      description: Atributos atualizados do serviço.
+      required: true
+      content:
+        application/json:
+          schema:
+            anyOf:
+              - $ref: '#/components/schemas/ChangeAccountServiceRequest'
+              - $ref: '#/components/schemas/ChangeCreditCardServiceRequest'
+    ChangeServiceStatus:
+      description: Habilitar/Desabilitar o serviço
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - enabled
+            properties:
+              enabled:
+                type: boolean
+                description: indica se o serviço deve permanecer habilitado (true) ou desabilitado (false)
+  schemas:
+    LinkData:
+      type: object
+      required:
+        - id
+        - createdAt
+        - status
+        - servicesStatus
+        - brand
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+          description: data em que o link foi registrado na aplicação
+          example: '2016-08-29T09:12:33.001Z'
+        status:
+          $ref: '#/components/schemas/LinkStatus'
+        servicesStatus:
+          $ref: '#/components/schemas/LinkServicesStatus'
+        brand:
+          $ref: '#/components/schemas/Brand'
+        lastUpdateAt:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+          description: representa a última sincronização do link.
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceData'
+    LinkStatus:
+      type: string
+      enum: [CREATED, UPDATING, LOGIN_ERROR, OUTDATED, WAITING_USER_INPUT, UPDATED]
+      description: >
+        Status do link:
+        * CREATED - O link foi criado, entretanto, a conexão com a instituição financeira ainda não foi estabelecida.
+        * UPDATING - uma tentativa de conexão/sincronização está em progresso.
+        * LOGIN_ERROR - as credenciais informadas não estão corretas.
+        * OUTDATED - a última atualização foi finalizada com erros. As credenciais estão corretas mas houve um erro inesperado. A atualização pode ser solicitada novamente.
+        * WAITING_USER_INPUT - são necessárias informações adicionais para realizar a conexão/atualização. É comum em conectores com MFA 2 passos.
+        * UPDATED - A sincronização foi finalizada com sucesso. Os dados estão disponíveis para serem coletados.
+    LinkServicesStatus:
+      type: string
+      enum: [NONE, PENDING, DONE]
+      description: >
+        Situação do link quanto aos seus serviços:
+        * NONE - não existem serviços vinculados ao link.
+        * PENDING - um ou mais serviços estão aguardando ação do usuário (habilitar/desabilitar).
+        * DONE - nenhum dos serviços vinculados ao link está aguardando ação do usuário.
+    Brand:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: nome da marca
+        primaryColor:
+          type: string
+        institutionUrl:
+          type: string
+        imageUrl:
+          type: string
+    ServiceData:
+      type: object
+      properties:
+        name:
+          type: string
+          description: nome do serviço
+          maxLength: 25
+        type:
+          $ref: '#/components/schemas/ServiceType'
+        data:
+          oneOf:
+            - $ref: '#/components/schemas/AccountData'
+            - $ref: '#/components/schemas/CreditCardData'
+            - $ref: '#/components/schemas/InvestmentSummary'
+    AccountData:
+      type: object
+      properties:
+        branchCode:
+          type: string
+          description: Código da agência detentora da conta
+          maxLength: 4
+        number:
+          type: string
+          description: número da conta
+          maxLength: 20
+    CreditCardData:
+      type: object
+      properties:
+        brand:
+          $ref: '#/components/schemas/CreditCardBrand'
+        level:
+          type: string
+          description: Nível do cartão (black, signature, ouro, etc.)
+    InvestmentSummary:
+      type: object
+      properties:
+        balance:
+          type: number
+          format: decimal
+    ServiceStatus:
+      type: string
+      enum: [PENDING, ENABLED, DISABLED]
+      description: >
+        Situação do link quanto aos seus serviços:
+        * PENDING - o usuário ainda não definiu se o serviço será, ou não, utilizado.
+        * ENABLED - o serviço está desabilitado.
+        * DISABLED - o serviço está habilitado.
+    ServiceType:
+      type: string
+      enum: [ACCOUNT, CREDIT_CARD, INVESTMENT]
+      description: >
+        Tipo do serviço:
+        * ACCOUNT - Conta-corrente, poupança, etc.
+        * CREDIT_CARD - Cartão de crédito.
+        * INVESTMENT - CDB, Renda variável, CDI, Etc.
+    AccountType:
+      type: string
+      enum: [BANK, CREDIT, WALLET]
+      description: >
+        Tipo do serviço:
+        * BANK - Instituição bancária
+        * WALLET - Carteira
+    AccountSubtype:
+      type: string
+      enum: [SAVING_ACCOUNT, CHECKING_ACCOUNT, MONEY]
+      description: >
+        Tipo do serviço:
+        * SAVING_ACCOUNT - conta poupança
+        * CHECKING_ACCOUNT - conta corrente
+        * MONEY - Papel moeda.
+    CurrencyCode:
+      type: string
+      minLength: 3
+      maxLength: 3
+      example: BRL
+    CreditCardBrand:
+      type: string
+      enum: [VISA, MASTERCARD, ELO, AMERICAN_EXPRESS, HIPERCARD, SOROCRED, DINERS_CLUB, OTHER]
+    SourceDataType:
+      type: string
+      enum: [MANUAL, REGULATED_DATA, UNREGULATED_DATA]
+      description: >
+        Tipo do serviço:
+        * MANUAL - Dados inputados pelo usuário.
+        * REGULATED_DATA - Dados reguladas.
+        * UNREGULATED_DATA - Dados não reguladas.
+    ResponseErrors:
+      type: object
+      properties:
+        reference:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseError'
+    ResponseError:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          enum: [INVALID_PARAMETERS, MANDATORY_FIELDS, NOT_FOUND, INTERNAL_SERVER_ERROR]
+          description: >
+            codes:
+            * INVALID_PARAMETERS - o valor de um ou mais parâmetros/campos são inválidos.
+            * MANDATORY_FIELDS - o valor de um ou mais campos obrigatórios não foram enviados.
+            * NOT_FOUND - recurso não encontrado.
+            * INTERNAL_SERVER_ERROR - erro desconhecido.
+        message:
+          type: string
+    CreateCreditCardServiceRequest:
+      type: object
+      required:
+        - type
+        - name
+        - currencyCode
+        - brand
+        - balance
+        - balanceCloseDay
+        - balanceDueDay
+        - creditLimit
+        - availableCreditLimit
+      properties:
+        name:
+          type: string
+          description: nome do serviço
+          maxLength: 25
+        type:
+          $ref: '#/components/schemas/ServiceType'
+        level:
+          type: string
+          description: Nível do cartão (black, signature, ouro, etc.)
+          maxLength: 25
+        brand:
+          $ref: '#/components/schemas/CreditCardBrand'
+        balance:
+          type: number
+          description: balanço da conta
+        balanceCloseDay:
+          type: number
+          description: dia de fechamento do cartão
+          minimum: 1
+          maximum: 31
+        balanceDueDay:
+          type: number
+          description: dia de vencimento da fatura
+          minimum: 1
+          maximum: 31
+        creditLimit:
+          type: number
+          description: limite de crédito total
+        availableCreditLimit:
+          type: number
+          description: limite de crédito disponível
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+    CreateAccountServiceRequest:
+      type: object
+      required:
+        - type
+        - name
+        - accountType
+        - accountSubType
+        - balance
+        - currencyCode
+      properties:
+        name:
+          type: string
+          description: nome do serviço
+          maxLength: 25
+        type:
+          $ref: '#/components/schemas/ServiceType'
+        accountType:
+          $ref: '#/components/schemas/AccountType'
+        accountSubType:
+          $ref: '#/components/schemas/AccountSubtype'
+        balance:
+          type: number
+          description: balanço da conta
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+    ChangeAccountServiceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: nome do serviço
+          maxLength: 25
+        balance:
+          type: number
+          description: balanço da conta
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+    ChangeCreditCardServiceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: nome do serviço
+          maxLength: 25
+        level:
+          type: string
+          description: Nível do cartão (black, signature, ouro, etc.)
+          maxLength: 25
+        brand:
+          $ref: '#/components/schemas/CreditCardBrand'
+        balance:
+          type: number
+          description: balanço da conta
+        balanceCloseDay:
+          type: number
+          description: dia de fechamento do cartão
+          minimum: 1
+          maximum: 31
+        balanceDueDay:
+          type: number
+          description: dia de vencimento da fatura
+          minimum: 1
+          maximum: 31
+        creditLimit:
+          type: number
+          description: limite de crédito total
+        availableCreditLimit:
+          type: number
+          description: limite de crédito disponível
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
